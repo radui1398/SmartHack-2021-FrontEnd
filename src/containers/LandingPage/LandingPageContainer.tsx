@@ -5,6 +5,7 @@ import {
   PageContainer,
   PageLinker,
   EmergencyCta,
+  Sizes,
 } from '../../components'
 import {
   StyledLandingPageSection,
@@ -16,7 +17,7 @@ const { description, secondDescription } = landingPageMock
 
 export const LandingPageContainer: React.FC = () => (
   <PageContainer>
-    <Heading title="Welcome" />
+    <Heading title="Welcome" size={Sizes.Small} width={40} />
     <StyledLandingPageSection>
       <Button>Create your Profile</Button>
     </StyledLandingPageSection>
