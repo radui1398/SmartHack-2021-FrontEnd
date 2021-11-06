@@ -41,7 +41,12 @@ const font = {
 const color = {
   black: '#000000',
   white: '#FFFFFF',
+  dark: {
+    main: '#1E2629',
+  },
   gray: {
+    main: '#A6AEB2',
+    secondary: '#DCDDE1',
     100: '#F7FAFC',
     200: '#EDF2F7',
     300: '#E2E8F0',
@@ -53,6 +58,7 @@ const color = {
     900: '#1A202C',
   },
   red: {
+    main: '#E84118',
     100: '#FFF5F5',
     200: '#FED7D7',
     300: '#FEB2B2',
@@ -86,6 +92,7 @@ const color = {
     900: '#744210',
   },
   green: {
+    main: '#4CD137',
     100: '#F0FFF4',
     200: '#C6F6D5',
     300: '#9AE6B4',
@@ -119,6 +126,8 @@ const color = {
     900: '#3C366B',
   },
   blue: {
+    main: '#00A8FF',
+    secondary: '#273C75',
     100: '#EBF8FF',
     200: '#C3DAFE',
     300: '#A3BFFA',
