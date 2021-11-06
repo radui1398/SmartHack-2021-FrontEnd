@@ -1,5 +1,10 @@
-function App() {
+import React from 'react'
+import { Layout, Router } from './components'
 
-  return <div>TEST</div>
-}
+const App: React.FC = () => (
+  <Layout>
+    <Router />
+  </Layout>
+)
+
 export default App
