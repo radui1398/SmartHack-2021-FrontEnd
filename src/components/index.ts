@@ -1,6 +1,7 @@
 export * from './Layout'
 export * from './Router'
 export * from './Header/Header'
+export * from './ImageUpload/ImageUpload'
 export * from './SteadyBar/SteadyBar'
 
 export * from './elements/ProgressBar/ProgressBar'
