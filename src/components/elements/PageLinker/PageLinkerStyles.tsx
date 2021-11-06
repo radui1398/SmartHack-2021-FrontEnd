@@ -5,7 +5,7 @@ export const StyledPageLinker = styled.div`
   cursor: pointer;
   text-align: center;
   color: ${theme.color.gray.main};
-  font: 400 14px/24px ${theme.font.tertiary};
+  font: 400 14px/24px ${theme.font.primary};
   text-transform: uppercase;
 
   a {

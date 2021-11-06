@@ -6,7 +6,7 @@ export const StyledHeading = styled.h5<{ size: number; width: number }>`
   text-align: center;
   color: ${theme.color.gray.main};
   font: 400 ${(props) => props.size}px / ${(props) => props.size + 4}px
-    ${theme.font.tertiary};
+    ${theme.font.primary};
   text-transform: uppercase;
   position: relative;
 

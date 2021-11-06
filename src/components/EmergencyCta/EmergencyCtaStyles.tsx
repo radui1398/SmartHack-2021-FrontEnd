@@ -24,7 +24,7 @@ export const StyledEmergencyCtaIcon = styled.div`
 `
 
 export const StyledEmergencyCtaLabel = styled.label`
-  font: 400 14px/18px ${theme.font.secondary};
+  font: 400 14px/18px ${theme.font.primary};
   margin-top: 8px;
   text-align: center;
   color: ${theme.color.gray.main};

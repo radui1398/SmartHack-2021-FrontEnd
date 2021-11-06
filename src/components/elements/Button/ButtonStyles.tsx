@@ -7,7 +7,7 @@ export const StyledButton = styled.button`
   border-radius: 24px;
   padding: 24px 48px;
   color: ${theme.color.white};
-  font: 400 16px/18px ${theme.font.secondary};
+  font: 400 16px/18px ${theme.font.primary};
   text-transform: uppercase;
   background-color: ${theme.color.blue.main};
 

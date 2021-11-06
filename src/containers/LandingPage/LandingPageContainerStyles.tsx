@@ -14,6 +14,10 @@ export const StyledLandingPageSection = styled.div`
   justify-content: center;
   width: 100%;
   padding: 24px 0;
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
 `
 
 export const StyledPlatformDescriptionWrapper = styled.div`
