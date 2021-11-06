@@ -1,13 +1,19 @@
-import { Button } from '@material-ui/core'
 import styled from 'styled-components'
 import { theme } from '../../../globalStyle'
 
-export const StyledButton = styled(Button)`
-  && {
-    border-radius: 18px;
-    padding: 8px 32px;
-    color: ${theme.color.white};
-    font: 400 16px/22px ${theme.font.secondary};
-    background-color: ${theme.color.blue.main};
+export const StyledButton = styled.button`
+  cursor: pointer;
+  border: 1px solid ${theme.color.blue.main};
+  border-radius: 24px;
+  padding: 24px 48px;
+  color: ${theme.color.white};
+  font: 400 16px/18px ${theme.font.secondary};
+  text-transform: uppercase;
+  background-color: ${theme.color.blue.main};
+
+  &:hover {
+    border: 1px solid ${theme.color.blue.main};
+    color: ${theme.color.blue.main};
+    background-color: ${theme.color.white};
   }
 `
