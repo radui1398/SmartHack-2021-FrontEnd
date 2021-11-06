@@ -5,7 +5,7 @@ export const StyledHeading = styled.h5`
   width: 100%;
   text-align: center;
   color: ${theme.color.gray.main};
-  font: 400 14px/24px ${theme.font.tertiary};
+  font: 400 14px/24px ${theme.font.primary};
   border-bottom: 1px solid ${theme.color.gray.main};
   line-height: 1.8px;
   text-transform: uppercase;
