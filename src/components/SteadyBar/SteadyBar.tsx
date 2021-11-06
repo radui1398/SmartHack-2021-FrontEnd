@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useDeviceOrientation } from '../../../core/hooks/useDeviceOrientation'
+import { useDeviceOrientation } from '../../core/hooks/useDeviceOrientation'
 import { makeStyles } from '@material-ui/core'
-import { theme } from '../../../globalStyle'
+import { theme } from '../../globalStyle'
 
 const useStyles = makeStyles(() => ({
   container: {
