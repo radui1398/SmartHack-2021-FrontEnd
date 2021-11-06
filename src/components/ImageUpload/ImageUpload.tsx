@@ -1,7 +1,7 @@
 import React, { ChangeEvent, ReactElement } from 'react'
 
 interface Props {
-  onPhotoTake: (data: String) => void
+  onPhotoTake: (data: any) => void
   children: string | ReactElement
 }
 
@@ -21,11 +21,11 @@ export const ImageUpload: React.FC<Props> = (props: Props) => {
       }
 
       const result = reader?.result?.split(',')[1]
-      props.onPhotoTake(result)
+      props.onPhotoTake({ b64: result, file: event?.target?.files?.[0] })
     }
 
     reader.onerror = function (error) {
-      console.log('Error: ', error)
+      console.error('Error: ', error)
     }
   }
 

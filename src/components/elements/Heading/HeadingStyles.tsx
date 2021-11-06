@@ -12,7 +12,7 @@ export const StyledHeading = styled.h5<{ size: number; width: number }>`
 
   :before {
     content: '';
-    width: ${(props) => (100 - props.width) / 2 - 2}%;
+    width: ${(props) => (100 - props.width) / 2 - 4}%;
     height: ${(props) => (props.size === 20 ? 2 : 0.5)}px;
     background-color: ${theme.color.gray.main};
     display: block;
@@ -23,7 +23,7 @@ export const StyledHeading = styled.h5<{ size: number; width: number }>`
 
   :after {
     content: '';
-    width: ${(props) => (100 - props.width) / 2 - 2}%;
+    width: ${(props) => (100 - props.width) / 2 - 4}%;
     height: ${(props) => (props.size === 20 ? 2 : 0.5)}px;
     background-color: ${theme.color.gray.main};
     display: block;
