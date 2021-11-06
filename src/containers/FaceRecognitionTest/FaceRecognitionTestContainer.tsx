@@ -9,10 +9,19 @@ import { SelfieOnTest } from '../../components/SelfieOnTest/SelfieOnTest'
 import { TestFooter } from '../../components/TestFooter/TestFooter'
 import { LoadingBar } from '../../components/LoadingBar/LoadingBar'
 
-export const FaceRecognitionTestContainer: React.FC = () => {
+interface Props {
+  onSuccess: (result: boolean) => any
+  current: number
+}
+
+export const FaceRecognitionTestContainer: React.FC<Props> = ({ onSuccess, current }) => {
   const [image, setImage] = useState(null)
 
   if (image) {
+    setTimeout(() => {
+      onSuccess(true)
+    }, 3000)
+
     return (
       <PageContainer>
         <StyledUploadedImage
@@ -21,7 +30,7 @@ export const FaceRecognitionTestContainer: React.FC = () => {
         <StyledLoadingBarContainer>
           <LoadingBar />
         </StyledLoadingBarContainer>
-        <TestFooter>Loading Results</TestFooter>
+        <TestFooter>{current} FR Test</TestFooter>
       </PageContainer>
     )
   }
@@ -38,7 +47,7 @@ export const FaceRecognitionTestContainer: React.FC = () => {
         />
       </StyledFaceRecognitionTestSection>
 
-      <TestFooter>Face Recognition</TestFooter>
+      <TestFooter>{current} FR Test</TestFooter>
     </PageContainer>
   )
 }

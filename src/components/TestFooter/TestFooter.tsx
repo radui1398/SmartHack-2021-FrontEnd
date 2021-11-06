@@ -3,7 +3,7 @@ import React from 'react'
 import { StyledTestFooter } from './TestFooterStyles'
 
 interface Props {
-  children: string
+  children: any
 }
 
 export const TestFooter: React.FC<Props> = ({ children }) => (
