@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { GlobalReset } from '../globalStyle'
-import { ProgressBar } from '.'
+import { Header, ProgressBar } from '.'
 import { AppState } from '../store'
 
 interface StateProps {
@@ -19,7 +19,7 @@ const UnconnectedLayout: React.FC<Props> = ({ progress, children }) => (
   <>
     <GlobalReset />
     <ProgressBar show={progress > 0} />
-    <header />
+    <Header />
     <main id="content">{children}</main>
     <footer />
   </>
