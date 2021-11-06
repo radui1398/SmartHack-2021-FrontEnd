@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Heading, PageContainer, PageLinker } from '../../components'
+import { Button, Heading, PageContainer, PageLinker, Sizes } from '../../components'
 import {
   StyledLandingPageSection,
   StyledPlatformDescriptionWrapper,
@@ -11,7 +11,7 @@ const { description, secondDescription } = landingPageMock
 
 export const LandingPageContainer: React.FC = () => (
   <PageContainer>
-    <Heading title="Welcome" />
+    <Heading title="Welcome" size={Sizes.Small} width={40} />
     <StyledLandingPageSection>
       <Button>Create your Profile</Button>
     </StyledLandingPageSection>
