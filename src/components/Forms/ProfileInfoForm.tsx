@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { MdAddAPhoto } from 'react-icons/md'
 
 import { Button, Input, Form, ImageUpload } from '..'
-import { StyledImageUploadIcon } from '../elements/Form/FormStyles'
+import {
+  StyledImageUploadIcon,
+  StyledUploadedImageOnForm,
+} from '../elements/Form/FormStyles'
 
 interface Props {
   action: () => void
@@ -30,7 +33,10 @@ const initialValues: FormValues = {
 
 export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
   const [formValues, updateFormValues] = useState<FormValues>(initialValues)
+  const [image, setImage] = useState<File | null>(null)
   const isValid = Object.values(formValues).every(Boolean)
+
+  console.log(image)
 
   const handleSubmit = () => {
     localStorage.setItem('createProfileReq', JSON.stringify(formValues))
@@ -38,6 +44,40 @@ export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
     if (action) {
       action()
     }
+  }
+
+  const renderImageUploader = () => {
+    if (image) {
+      return (
+        <ImageUpload
+          onPhotoTake={(data) => {
+            updateFormValues({ ...formValues, profilePicture: data.b64 })
+            setImage(data.file)
+          }}
+        >
+          <StyledImageUploadIcon>
+            <span>Change picture</span>
+            <StyledUploadedImageOnForm src={URL.createObjectURL(image)} />
+          </StyledImageUploadIcon>
+        </ImageUpload>
+      )
+    }
+
+    return (
+      <ImageUpload
+        onPhotoTake={(data) => {
+          updateFormValues({ ...formValues, profilePicture: data.b64 })
+          setImage(data.file)
+        }}
+      >
+        <StyledImageUploadIcon>
+          <span>Take a picture</span>
+          <span>
+            <MdAddAPhoto />
+          </span>
+        </StyledImageUploadIcon>
+      </ImageUpload>
+    )
   }
 
   return (
@@ -92,18 +132,8 @@ export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
           updateFormValues({ ...formValues, ecPhone: e.currentTarget.value })
         }
       />
-      <ImageUpload
-        onPhotoTake={(data) =>
-          updateFormValues({ ...formValues, profilePicture: data.b64 })
-        }
-      >
-        <StyledImageUploadIcon>
-          <span>Take a picture</span>
-          <span>
-            <MdAddAPhoto />
-          </span>
-        </StyledImageUploadIcon>
-      </ImageUpload>
+      {renderImageUploader()}
+
       <Button disabled={!isValid} onClick={handleSubmit}>
         Next
       </Button>

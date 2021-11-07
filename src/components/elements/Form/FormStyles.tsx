@@ -45,3 +45,13 @@ export const StyledImageUploadIcon = styled.div`
     font-size: 28px;
   }
 `
+
+export const StyledUploadedImageOnForm = styled.div<{ src: string }>`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid ${theme.color.dark.main};
+  background-image: url('${(props) => props.src}');
+  background-size: cover;
+  background-position: center;
+`
