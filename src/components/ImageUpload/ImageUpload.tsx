@@ -1,4 +1,5 @@
 import React, { ChangeEvent, ReactElement } from 'react'
+import { StyledImageUploadWrapper } from './ImageUploadStyles'
 
 interface Props {
   onPhotoTake: (data: any) => void
@@ -25,12 +26,12 @@ export const ImageUpload: React.FC<Props> = (props: Props) => {
     }
 
     reader.onerror = function (error) {
-      console.log('Error: ', error)
+      console.error('Error: ', error)
     }
   }
 
   return (
-    <div>
+    <StyledImageUploadWrapper>
       <label htmlFor="image-upload">{props.children}</label>
       <input
         id="image-upload"
@@ -41,6 +42,6 @@ export const ImageUpload: React.FC<Props> = (props: Props) => {
         style={{ display: 'none' }}
         onChange={handlePhotoTaken}
       />
-    </div>
+    </StyledImageUploadWrapper>
   )
 }

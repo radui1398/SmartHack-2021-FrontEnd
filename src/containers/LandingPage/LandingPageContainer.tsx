@@ -1,11 +1,17 @@
 import React from 'react'
-import { Button, Heading, PageContainer, PageLinker, Sizes } from '../../components'
+import {
+  Button,
+  Heading,
+  PageContainer,
+  PageLinker,
+  EmergencyCta,
+  Sizes,
+} from '../../components'
 import {
   StyledLandingPageSection,
   StyledPlatformDescriptionWrapper,
 } from './LandingPageContainerStyles'
 import { landingPageMock } from '../../mocks'
-import { EmergencyCta } from '../../components/EmergencyCta/EmergencyCta'
 
 const { description, secondDescription } = landingPageMock
 

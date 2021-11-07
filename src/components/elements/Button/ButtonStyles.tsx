@@ -16,4 +16,13 @@ export const StyledButton = styled.button`
     color: ${theme.color.blue.main};
     background-color: ${theme.color.white};
   }
+
+  &:disabled,
+  &:disabled:hover {
+    cursor: not-allowed;
+    opacity: 0.4;
+    border: 1px solid ${theme.color.blue.main};
+    color: ${theme.color.white};
+    background-color: ${theme.color.blue.main};
+  }
 `
