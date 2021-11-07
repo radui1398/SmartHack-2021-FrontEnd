@@ -1,4 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import { Routes } from '../../core/types'
+
 import {
   Button,
   Heading,
@@ -19,7 +23,9 @@ export const LandingPageContainer: React.FC = () => (
   <PageContainer>
     <Heading title="Welcome" size={Sizes.Small} width={40} />
     <StyledLandingPageSection>
-      <Button>Create your Profile</Button>
+      <Link to={Routes.CREATE_PROFILE}>
+        <Button>Create your Profile</Button>
+      </Link>
     </StyledLandingPageSection>
     <StyledLandingPageSection>
       <StyledPlatformDescriptionWrapper>

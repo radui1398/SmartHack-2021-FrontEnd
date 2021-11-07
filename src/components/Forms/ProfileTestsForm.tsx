@@ -4,10 +4,6 @@ import { Checkbox, FormControlLabel, FormGroup } from '@material-ui/core'
 import { Button, Form } from '..'
 import { medicalChecksMock } from '../../mocks/MedicalChecks'
 
-interface Props {
-  handleSubmit: () => void
-}
-
 export const ProfileTestsForm: React.FC = () => {
   const [medicalChecks, updateMedicalChecks] = useState<string[]>([])
 
