@@ -1,5 +1,7 @@
 import React, { FormEvent, useState } from 'react'
 import { Button, Form, Input, Spinner } from '..'
+import { Routes } from '../../core/types'
+import { useHistory } from 'react-router-dom'
 
 interface Props {
   getProfile(nin: string): void
@@ -8,12 +10,15 @@ interface Props {
 export const LoginForm: React.FC<Props> = ({ getProfile }: Props) => {
   const [nin, updateNin] = useState<string>('')
   const [isLoading, updateIsLoading] = useState<boolean>(false)
+  const router = useHistory()
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     updateIsLoading(true)
-    getProfile(nin)
+    await getProfile(nin)
     updateIsLoading(false)
+
+    router.push(Routes.DASHBOARD)
   }
 
   return (

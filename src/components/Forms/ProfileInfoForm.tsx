@@ -33,6 +33,8 @@ export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
   const isValid = Object.values(formValues).every(Boolean)
 
   const handleSubmit = () => {
+    localStorage.setItem('createProfileReq', JSON.stringify(formValues))
+
     if (action) {
       action()
     }

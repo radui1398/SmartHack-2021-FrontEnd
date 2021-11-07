@@ -15,8 +15,6 @@ export const getProfileThunk =
 
       const profile = await Context.apiService.getProfile(nin)
 
-      console.log(profile)
-
       dispatch(getProfileSuccessAction(profile))
 
       return resultFormatter.ok<void, string>()

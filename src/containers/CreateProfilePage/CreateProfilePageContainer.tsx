@@ -14,10 +14,20 @@ import {
   StyledCreateProfileTitle,
 } from './CreateProfilePageContainerStyles'
 import { Routes } from '../../core/types'
+import { CreateProfileReq } from '../../core/services'
+import { createProfileThunk } from '../../store/profile/createProfileThunk'
+import { AppState } from '../../store'
+import { connect } from 'react-redux'
+
+interface DispatchProps {
+  createProfile(req: CreateProfileReq): void
+}
 
 type CreateProfileStep = 'profile-info' | 'profile-tests'
 
-export const CreateProfilePageContainer: React.FC = () => {
+const UnconnectedCreateProfilePageContainer: React.FC<DispatchProps> = ({
+  createProfile,
+}: DispatchProps) => {
   const [step, updateStep] = useState<CreateProfileStep>('profile-info')
 
   const title = step === 'profile-info' ? 'Setup your profile' : 'Medical checks'
@@ -37,8 +47,19 @@ export const CreateProfilePageContainer: React.FC = () => {
       {step === 'profile-info' ? (
         <ProfileInfoForm action={() => updateStep('profile-tests')} />
       ) : (
-        <ProfileTestsForm />
+        <ProfileTestsForm createProfile={createProfile} />
       )}
     </PageContainer>
   )
 }
+
+const mapDispatchToProps: DispatchProps = {
+  createProfile: createProfileThunk,
+}
+
+const mapStateToProps = ({}: AppState) => ({})
+
+export const CreateProfilePageContainer = connect<{}, DispatchProps, {}, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(UnconnectedCreateProfilePageContainer)

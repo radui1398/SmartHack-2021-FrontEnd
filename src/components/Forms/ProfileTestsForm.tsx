@@ -1,16 +1,32 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { Checkbox, FormControlLabel, FormGroup } from '@material-ui/core'
 
-import { Button, Form } from '..'
+import { Button, Form, Spinner } from '..'
 import { medicalChecksMock } from '../../mocks/MedicalChecks'
+import { CreateProfileReq } from '../../core/services'
+import { Routes } from '../../core/types'
+import { useHistory } from 'react-router-dom'
 
-export const ProfileTestsForm: React.FC = () => {
+interface Props {
+  createProfile(req: CreateProfileReq): void
+}
+
+export const ProfileTestsForm: React.FC<Props> = ({ createProfile }: Props) => {
   const [medicalChecks, updateMedicalChecks] = useState<string[]>([])
+  const [isLoading, updateIsLoading] = useState<boolean>(false)
+  const router = useHistory()
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+    updateIsLoading(true)
 
-    console.log('submit')
+    const createProfileReq = JSON.parse(localStorage.getItem('createProfileReq') || '')
+
+    await createProfile({ ...createProfileReq, medicalChecks })
+
+    updateIsLoading(false)
+
+    router.push(Routes.LOGIN)
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +56,7 @@ export const ProfileTestsForm: React.FC = () => {
         ))}
       </FormGroup>
       <Button disabled={medicalChecks.length === 0} onClick={handleSubmit}>
-        Save
+        {isLoading ? <Spinner /> : 'Save'}
       </Button>
     </Form>
   )
