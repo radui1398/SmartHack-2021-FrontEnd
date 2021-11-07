@@ -12,23 +12,23 @@ interface Props {
 }
 
 interface FormValues {
-  name: string
+  fullName: string
   nin: string
-  birthdate: string
-  phone: string
+  birthday: string
+  phoneNumber: string
   ecName: string
-  ecPhone: string
-  profilePicture: string
+  ecPhoneNumber: string
+  picture: string
 }
 
 const initialValues: FormValues = {
-  name: '',
+  fullName: '',
   nin: '',
-  birthdate: '',
-  phone: '',
+  birthday: '',
+  phoneNumber: '',
   ecName: '',
-  ecPhone: '',
-  profilePicture: '',
+  ecPhoneNumber: '',
+  picture: '',
 }
 
 export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
@@ -51,7 +51,7 @@ export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
       return (
         <ImageUpload
           onPhotoTake={(data) => {
-            updateFormValues({ ...formValues, profilePicture: data.b64 })
+            updateFormValues({ ...formValues, picture: data.b64 })
             setImage(data.file)
           }}
         >
@@ -66,7 +66,7 @@ export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
     return (
       <ImageUpload
         onPhotoTake={(data) => {
-          updateFormValues({ ...formValues, profilePicture: data.b64 })
+          updateFormValues({ ...formValues, picture: data.b64 })
           setImage(data.file)
         }}
       >
@@ -83,11 +83,13 @@ export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
   return (
     <Form>
       <Input
-        name="name"
+        name="fullName"
         type="text"
         placeholder=" "
         label="Name"
-        onChange={(e) => updateFormValues({ ...formValues, name: e.currentTarget.value })}
+        onChange={(e) =>
+          updateFormValues({ ...formValues, fullName: e.currentTarget.value })
+        }
       />
       <Input
         name="nin"
@@ -97,21 +99,21 @@ export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
         onChange={(e) => updateFormValues({ ...formValues, nin: e.currentTarget.value })}
       />
       <Input
-        name="birthdate"
+        name="birthday"
         type="date"
         placeholder=" "
         label="Birthdate"
         onChange={(e) =>
-          updateFormValues({ ...formValues, birthdate: e.currentTarget.value })
+          updateFormValues({ ...formValues, birthday: e.currentTarget.value })
         }
       />
       <Input
-        name="phone"
+        name="phoneNumber"
         type="text"
         placeholder=" "
         label="Phone"
         onChange={(e) =>
-          updateFormValues({ ...formValues, phone: e.currentTarget.value })
+          updateFormValues({ ...formValues, phoneNumber: e.currentTarget.value })
         }
       />
       <Input
@@ -124,12 +126,12 @@ export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
         }
       />
       <Input
-        name="ecPhone"
+        name="ecPhoneNumber"
         type="text"
         placeholder=" "
         label="EC Phone"
         onChange={(e) =>
-          updateFormValues({ ...formValues, ecPhone: e.currentTarget.value })
+          updateFormValues({ ...formValues, ecPhoneNumber: e.currentTarget.value })
         }
       />
       {renderImageUploader()}
