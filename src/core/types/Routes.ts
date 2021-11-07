@@ -7,4 +7,5 @@ export enum Routes {
   TESTS = '/tests',
   TEST = '/tests/:id',
   AVC = '/medical-checks/avc',
+  HELP = '/help',
 }

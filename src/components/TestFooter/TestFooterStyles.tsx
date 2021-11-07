@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { theme } from '../../globalStyle'
 
 export const StyledTestFooter = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100%;
   background-color: ${theme.color.blue.secondary};
   margin-top: auto;

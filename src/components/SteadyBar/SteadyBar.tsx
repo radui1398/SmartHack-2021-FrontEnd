@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDeviceOrientation } from '../../core/hooks/useDeviceOrientation'
 import { makeStyles } from '@material-ui/core'
 import { theme } from '../../globalStyle'
+import { StyledSteadyGreenBar } from './SteadyBarStyles'
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -72,13 +73,7 @@ export const SteadyBar: React.FC<Props> = ({ onSteadyChange, currentSteady }) =>
   return (
     <div className={classes.container}>
       <div className={classes.center} />
-      <div
-        className={classes.bar}
-        style={{
-          transform: `rotateZ(${degrees}deg)`,
-          backgroundColor: steady ? theme.color.green.main : theme.color.red.main,
-        }}
-      />
+      <StyledSteadyGreenBar steady={steady} degrees={degrees} />
     </div>
   )
 }

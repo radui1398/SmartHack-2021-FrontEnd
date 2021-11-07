@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Routes } from '../core/types'
-import { LoginPage, LandingPage, CreateProfilePage, AVCPage } from '../pages'
+import { LoginPage, LandingPage, CreateProfilePage, AVCPage, Help } from '../pages'
 
 export const Router: React.FC = () => (
   <BrowserRouter>
@@ -11,6 +11,9 @@ export const Router: React.FC = () => (
       </Route>
       <Route exact path={Routes.AVC}>
         <AVCPage />
+      </Route>
+      <Route exact path={Routes.HELP}>
+        <Help />
       </Route>
       <Route path={Routes.DASHBOARD}>
         <div>Dashboard</div>

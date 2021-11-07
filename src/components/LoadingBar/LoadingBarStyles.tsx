@@ -1,23 +1,21 @@
 import { theme } from '../../globalStyle'
-import { LinearProgress, withStyles } from '@material-ui/core'
+import { LinearProgress } from '@material-ui/core'
 import styled from 'styled-components'
 
-export const StyledLoadingBar = withStyles(() => ({
-  root: {
-    height: 10,
-    borderRadius: 5,
-  },
-  colorPrimary: {
-    backgroundColor: theme.color.gray.secondary,
-  },
-  bar: {
-    borderRadius: 5,
-    backgroundColor: theme.color.blue.main,
-  },
-}))(LinearProgress)
+export const StyledLoadingBar = styled(LinearProgress)<{ v: string }>`
+  height: 10px !important;
+  border-radius: 5px;
+  background-color: ${(props) =>
+    props.v === 'red' ? theme.color.red['200'] : theme.color.blue['200']} !important;
+
+  .MuiLinearProgress-barColorPrimary {
+    background-color: ${(props) =>
+      props.v === 'red' ? theme.color.red.main : theme.color.blue.main};
+  }
+`
 
 export const StyledLoadingBarContainer = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   width: 90%;
   left: 5%;
