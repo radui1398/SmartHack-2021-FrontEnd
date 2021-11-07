@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
     height: 55,
   },
   bar: {
-    width: '60%',
+    width: 200,
     height: 6,
   },
   center: {

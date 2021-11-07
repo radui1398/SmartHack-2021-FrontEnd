@@ -4,6 +4,7 @@ import { theme } from '../../globalStyle'
 export const StyledResultList = styled.ul`
   margin-top: 20px;
   padding: 0;
+  width: 100%;
 `
 
 export const StyledResultItem = styled.li<{ passed: boolean }>`
