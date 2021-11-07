@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Routes } from '../../core/types'
-import { Heading, PageContainer, PageLinker, EmergencyCta, Sizes } from '../../components'
+import {
+  Heading,
+  PageContainer,
+  PageLinker,
+  EmergencyCta,
+  Sizes,
+  Header,
+} from '../../components'
 import {
   StyledViewTestsLink,
   StyledViewTestsPageSection,
@@ -65,6 +72,8 @@ export const ViewTestsPageContainer: React.FC = () => {
 
   return (
     <PageContainer>
+      <Header />
+
       <Heading title="SINGLE TESTS" size={Sizes.Small} width={60} />
 
       <StyledViewTestsLink

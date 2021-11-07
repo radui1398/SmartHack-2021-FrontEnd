@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 
-import { PageContainer, ProfileInfoForm, ProfileTestsForm } from '../../components'
+import {
+  Header,
+  PageContainer,
+  ProfileInfoForm,
+  ProfileTestsForm,
+} from '../../components'
+
 import {
   StyledCreateProfileBackCta,
   StyledCreateProfileHeader,
   StyledCreateProfileTitle,
 } from './CreateProfilePageContainerStyles'
+import { Routes } from '../../core/types'
 
 type CreateProfileStep = 'profile-info' | 'profile-tests'
 
@@ -17,6 +24,8 @@ export const CreateProfilePageContainer: React.FC = () => {
 
   return (
     <PageContainer>
+      <Header to={Routes.LANDING} />
+
       <StyledCreateProfileHeader>
         {step === 'profile-tests' && (
           <StyledCreateProfileBackCta onClick={() => updateStep('profile-info')}>

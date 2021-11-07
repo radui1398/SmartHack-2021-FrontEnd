@@ -1,5 +1,5 @@
 import React, { useEffect, useState, MouseEvent } from 'react'
-import { Heading, PageContainer, Sizes, TestTimer } from '../../components'
+import { Header, Heading, PageContainer, Sizes, TestTimer } from '../../components'
 import { TestFooter } from '../../components/TestFooter/TestFooter'
 import { LoadingBar } from '../../components/LoadingBar/LoadingBar'
 import { IndividualTestProps } from '../../core/interfaces'
@@ -32,6 +32,8 @@ export const TimerTestContainer: React.FC<IndividualTestProps> = ({
 
   return (
     <PageContainer>
+      <Header />
+
       <Heading
         size={Sizes.Large}
         title="PRESS THE BUTTON BEFORE THE TIME RUNS OUT"

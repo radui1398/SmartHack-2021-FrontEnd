@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heading, PageContainer, Sizes } from '../../components'
+import { Header, Heading, PageContainer, Sizes } from '../../components'
 import { SelfieOnTest } from '../../components/SelfieOnTest/SelfieOnTest'
 import { TestFooter } from '../../components/TestFooter/TestFooter'
 import { LoadingBar } from '../../components/LoadingBar/LoadingBar'
@@ -34,6 +34,8 @@ export const FaceRecognitionTestContainer: React.FC<IndividualTestProps> = ({
 
   return (
     <PageContainer>
+      <Header />
+
       <Heading size={Sizes.Large} title="PLEASE TAKE A CLEAR SELFIE" width={60} />
 
       <StyledFaceRecognitionTestSection>

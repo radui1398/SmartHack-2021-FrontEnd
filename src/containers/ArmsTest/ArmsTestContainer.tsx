@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Heading, PageContainer, Sizes, SteadyBar } from '../../components'
+import { Header, Heading, PageContainer, Sizes, SteadyBar } from '../../components'
 import { TestFooter } from '../../components/TestFooter/TestFooter'
 import { StyledSteadyWrapper } from './ArmsTestContainerStyles'
 import { LoadingBar } from '../../components/LoadingBar/LoadingBar'
@@ -26,6 +26,7 @@ export const ArmsTestContainer: React.FC<IndividualTestProps> = ({
 
   return (
     <PageContainer>
+      <Header />
       <Heading size={Sizes.Large} title="KEEP THE LINE STEADY" width={60} />
       <StyledSteadyWrapper>
         <SteadyBar onSteadyChange={handleOnSteadyChange} currentSteady={currentSteady} />

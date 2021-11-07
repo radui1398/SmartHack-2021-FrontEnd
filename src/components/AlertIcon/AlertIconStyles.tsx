@@ -6,6 +6,7 @@ export const StyledAlertIconWrapper = styled.div`
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
 `
 
 export const StyledAlertIconText = styled.div`
@@ -18,7 +19,7 @@ export const StyledAlertIconText = styled.div`
   display: flex;
   width: 120px;
   height: 120px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   font: 700 100px/48px ${theme.font.primary};
 
   &:hover {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, PageContainer, PageLinker } from '../../components'
+import { Header, Heading, PageContainer, PageLinker } from '../../components'
 import { SingleTestInterface } from '../../core/interfaces'
 import { Routes } from '../../core/types'
 import {
@@ -28,6 +28,7 @@ export const TestResultsContainer: React.FC<Props> = ({ tests }) => {
 
   return (
     <PageContainer>
+      <Header />
       <Heading title="FINAL RESULTS" width={40} />
       <StyledResultList>{renderItems(tests)}</StyledResultList>
 

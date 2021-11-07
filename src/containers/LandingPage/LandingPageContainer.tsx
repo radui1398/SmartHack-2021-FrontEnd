@@ -10,6 +10,7 @@ import {
   PageLinker,
   EmergencyCta,
   Sizes,
+  Header,
 } from '../../components'
 import {
   StyledLandingPageSection,
@@ -23,6 +24,7 @@ export const LandingPageContainer: React.FC = () => {
   const history = useHistory()
   return (
     <PageContainer>
+      <Header />
       <Heading title="Welcome" size={Sizes.Small} width={40} />
       <StyledLandingPageSection>
         <Link to={Routes.CREATE_PROFILE}>

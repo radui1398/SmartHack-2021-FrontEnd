@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { LoadingBar, Variants } from '../../components/LoadingBar/LoadingBar'
-import { AlertIcon, CancelHelp, PageContainer, TestFooter } from '../../components'
+import {
+  AlertIcon,
+  CancelHelp,
+  Header,
+  PageContainer,
+  TestFooter,
+} from '../../components'
 
 export const HelpPageContainer: React.FC = () => {
   const [secondsToDecrease, setSecondsToDecrease] = useState(0)
@@ -21,6 +27,7 @@ export const HelpPageContainer: React.FC = () => {
 
   return (
     <PageContainer>
+      <Header />
       <AlertIcon />
       <CancelHelp />
       <LoadingBar variant={Variants.RED} />
