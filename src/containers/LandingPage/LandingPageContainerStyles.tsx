@@ -6,7 +6,7 @@ export const StyledLandingPageSection = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 24px 0;
+  padding: 12px 0;
 
   &:last-of-type {
     padding-bottom: 0;

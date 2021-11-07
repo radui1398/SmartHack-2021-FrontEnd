@@ -40,7 +40,7 @@ export const DashboardPageContainer: React.FC = () => {
 
       <StyledDashboardLink
         onClick={() => {
-          history.push(Routes.AVC)
+          history.push(Routes.TESTS)
         }}
       >
         <span>VIEW TESTS</span>

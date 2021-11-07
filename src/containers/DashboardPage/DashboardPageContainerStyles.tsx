@@ -37,5 +37,5 @@ export const StyledDashboardPicture = styled.div<{ src: string }>`
   border-radius: 50%;
   margin-bottom: 20px;
   margin-top: -60px;
-  border: 2px solid ${theme.color.dark.main};
+  border: 2-px solid ${theme.color.dark.main};
 `

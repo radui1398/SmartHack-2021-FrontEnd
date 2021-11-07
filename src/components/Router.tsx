@@ -8,6 +8,7 @@ import {
   AVCPage,
   Help,
   DashboardPage,
+  ViewTestsPage,
 } from '../pages'
 
 export const Router: React.FC = () => (
@@ -21,6 +22,9 @@ export const Router: React.FC = () => (
       </Route>
       <Route exact path={Routes.HELP}>
         <Help />
+      </Route>
+      <Route exact path={Routes.TESTS}>
+        <ViewTestsPage />
       </Route>
       <Route path={Routes.DASHBOARD}>
         <DashboardPage />
