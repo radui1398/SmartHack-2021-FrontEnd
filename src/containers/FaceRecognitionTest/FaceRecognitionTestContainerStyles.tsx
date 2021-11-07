@@ -21,11 +21,3 @@ export const StyledUploadedImage = styled.div`
   top: 0;
   left: 0;
 `
-
-export const StyledLoadingBarContainer = styled.div`
-  position: absolute;
-  z-index: 1000;
-  width: 90%;
-  left: 5%;
-  bottom: 70px;
-`

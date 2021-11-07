@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
 import { Heading, PageContainer, Sizes } from '../../components'
-import {
-  StyledFaceRecognitionTestSection,
-  StyledUploadedImage,
-  StyledLoadingBarContainer,
-} from './FaceRecognitionTestContainerStyles'
 import { SelfieOnTest } from '../../components/SelfieOnTest/SelfieOnTest'
 import { TestFooter } from '../../components/TestFooter/TestFooter'
 import { LoadingBar } from '../../components/LoadingBar/LoadingBar'
+import { IndividualTestProps } from '../../core/interfaces'
+import {
+  StyledFaceRecognitionTestSection,
+  StyledUploadedImage,
+} from './FaceRecognitionTestContainerStyles'
 
-interface Props {
-  onSuccess: (result: boolean) => any
-  current: number
-}
-
-export const FaceRecognitionTestContainer: React.FC<Props> = ({ onSuccess, current }) => {
+export const FaceRecognitionTestContainer: React.FC<IndividualTestProps> = ({
+  onSuccess,
+  current,
+}) => {
   const [image, setImage] = useState(null)
 
+  // when the image was loaded
   if (image) {
     setTimeout(() => {
       onSuccess(true)
@@ -27,10 +26,8 @@ export const FaceRecognitionTestContainer: React.FC<Props> = ({ onSuccess, curre
         <StyledUploadedImage
           style={{ backgroundImage: `url("${URL.createObjectURL(image)}")` }}
         />
-        <StyledLoadingBarContainer>
-          <LoadingBar />
-        </StyledLoadingBarContainer>
-        <TestFooter>{current} FR Test</TestFooter>
+        <LoadingBar />
+        <TestFooter>{current + 1}. FR Test</TestFooter>
       </PageContainer>
     )
   }
@@ -47,7 +44,7 @@ export const FaceRecognitionTestContainer: React.FC<Props> = ({ onSuccess, curre
         />
       </StyledFaceRecognitionTestSection>
 
-      <TestFooter>{current} FR Test</TestFooter>
+      <TestFooter>{current + 1}. FR Test</TestFooter>
     </PageContainer>
   )
 }

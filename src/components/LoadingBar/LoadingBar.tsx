@@ -1,6 +1,10 @@
 import React from 'react'
-import { StyledLoadingBar } from './LoadingBarStyles'
+import { StyledLoadingBar, StyledLoadingBarContainer } from './LoadingBarStyles'
 
 export const LoadingBar: React.FC = () => {
-  return <StyledLoadingBar />
+  return (
+    <StyledLoadingBarContainer>
+      <StyledLoadingBar />
+    </StyledLoadingBarContainer>
+  )
 }
