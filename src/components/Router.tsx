@@ -1,7 +1,14 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Routes } from '../core/types'
-import { LoginPage, LandingPage, CreateProfilePage, AVCPage, Help } from '../pages'
+import {
+  LoginPage,
+  LandingPage,
+  CreateProfilePage,
+  AVCPage,
+  Help,
+  DashboardPage,
+} from '../pages'
 
 export const Router: React.FC = () => (
   <BrowserRouter>
@@ -16,7 +23,7 @@ export const Router: React.FC = () => (
         <Help />
       </Route>
       <Route path={Routes.DASHBOARD}>
-        <div>Dashboard</div>
+        <DashboardPage />
       </Route>
       <Route path={Routes.CREATE_PROFILE}>
         <CreateProfilePage />
