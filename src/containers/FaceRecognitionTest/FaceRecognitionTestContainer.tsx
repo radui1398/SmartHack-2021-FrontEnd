@@ -8,6 +8,7 @@ import {
   StyledUploadedImage,
 } from './FaceRecognitionTestContainerStyles'
 import { Context } from '../../Context'
+import { useCookies } from 'react-cookie'
 
 export const FaceRecognitionTestContainer: React.FC<IndividualTestProps> = ({
   onSuccess,
@@ -15,12 +16,13 @@ export const FaceRecognitionTestContainer: React.FC<IndividualTestProps> = ({
 }) => {
   const [image, setImage] = useState(null)
   const [b64, updateB64] = useState(null)
+  const [cookies] = useCookies()
 
   // when the image was loaded
   if (image && b64) {
     Context.apiService
       .faceRecognition({
-        nin: '198021209099',
+        nin: cookies.nin,
         picture: b64,
       })
       .then((result) => {
