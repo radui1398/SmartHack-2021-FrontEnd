@@ -26,11 +26,17 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-export const SteadyBar: React.FC = () => {
+interface Props {
+  onSteadyChange: (steady: boolean) => any
+  currentSteady: boolean
+}
+
+export const SteadyBar: React.FC<Props> = ({ onSteadyChange, currentSteady }) => {
   const { orientation, requestAccess } = useDeviceOrientation()
   const [sensorsAllowed, setSensorsAllowed] = useState(false)
   const [degrees, setDegrees] = useState(180)
   const classes = useStyles()
+  let steady = false
 
   if (!sensorsAllowed) {
     requestAccess()
@@ -38,20 +44,30 @@ export const SteadyBar: React.FC = () => {
         setSensorsAllowed(true)
         console.log('sensors initialized')
       })
-      .catch((error) => console.log('Err: ' + error))
+      .catch((error) => console.error('Err: ' + error))
+  }
+
+  if ((degrees > 0 && degrees < 5) || degrees > 175) {
+    steady = true
+  }
+
+  if ((degrees < 0 && degrees > -5) || degrees < -175) {
+    steady = true
   }
 
   useEffect(() => {
-    if (orientation?.beta) {
+    if (
+      orientation?.beta &&
+      (Math.abs(degrees) - Math.abs(orientation.beta) > 0.5 ||
+        Math.abs(orientation.beta) - Math.abs(degrees))
+    ) {
       setDegrees(orientation.beta)
     }
+
+    if (sensorsAllowed && orientation && currentSteady !== steady) {
+      onSteadyChange(steady)
+    }
   }, [orientation])
-
-  const steady = degrees > 0 ? 180 - degrees < 5 : 180 + degrees < 5
-
-  if (orientation?.absolute) {
-    setDegrees(degrees * -1)
-  }
 
   return (
     <div className={classes.container}>

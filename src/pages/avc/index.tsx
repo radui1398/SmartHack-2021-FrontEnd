@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
-import { FaceRecognitionTestContainer } from '../../containers'
+import {
+  ArmsTestContainer,
+  FaceRecognitionTestContainer,
+  TestResultsContainer,
+} from '../../containers'
+import { IndividualTestStateInterface } from '../../core/interfaces'
 
-interface initialStateInterface {
-  current: number
-  tests: [any]
-}
-
-const initialState: initialStateInterface = {
+const initialState: IndividualTestStateInterface = {
   current: 0,
+  failed: 0,
   tests: [
     {
       name: 'Face Recognition',
+      passed: false,
+    },
+    {
+      name: 'Arms Test',
       passed: false,
     },
   ],
@@ -19,25 +24,33 @@ const initialState: initialStateInterface = {
 export const AVCPage: React.FC = () => {
   const [structure, setStructure] = useState(initialState)
 
-  if (structure.current >= structure.tests.length) return <p>Results</p>
+  // when results must be displayed
+  if (structure.current >= structure.tests.length) {
+    return <TestResultsContainer tests={structure.tests} />
+  }
 
-  const handleNext = (result: boolean) => {
+  // fn to go to next test and save the result
+  const handleNext = async (result: boolean) => {
     const newStructure = { ...structure }
     newStructure.tests[structure.current].passed = result
     newStructure.current = structure.current + 1
-    setStructure(newStructure)
+    newStructure.failed = structure.failed + (result ? 0 : 1)
+    await setStructure(newStructure)
   }
 
+  // switch to choose the right test
+  // the default case should never happen
   switch (structure.current) {
-    default:
-    case 1:
+    case 0:
       return (
         <FaceRecognitionTestContainer
           current={structure.current}
-          onSuccess={(result) => {
-            handleNext(result)
-          }}
+          onSuccess={handleNext}
         />
       )
+    case 1:
+      return <ArmsTestContainer onSuccess={handleNext} current={structure.current} />
+    default:
+      return <p>Never happening!</p>
   }
 }

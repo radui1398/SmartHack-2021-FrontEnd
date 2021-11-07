@@ -37,7 +37,7 @@ export const LandingPageContainer: React.FC = () => (
       <EmergencyCta handleClick={() => console.log('Emergency Call')} />
     </StyledLandingPageSection>
     <StyledLandingPageSection>
-      <PageLinker path="/login" label="Login" />
+      <PageLinker path="/login" label="Login" width={40} />
     </StyledLandingPageSection>
   </PageContainer>
 )

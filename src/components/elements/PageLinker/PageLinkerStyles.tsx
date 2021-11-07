@@ -7,6 +7,7 @@ export const StyledPageLinker = styled.div`
   color: ${theme.color.gray.main};
   font: 400 14px/24px ${theme.font.primary};
   text-transform: uppercase;
+  width: 80%;
 
   a {
     background: ${theme.color.white};
