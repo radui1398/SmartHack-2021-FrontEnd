@@ -16,6 +16,10 @@ import {
   StyledDashboardPicture,
 } from './DashboardPageContainerStyles'
 import { Profile } from '../../core/domain'
+import { AppState } from '../../store'
+import { getProfileThunk } from '../../store/profile/getProfileThunk'
+import { connect } from 'react-redux'
+import { useCookies } from 'react-cookie'
 
 interface StateProps {
   profile: Profile
@@ -27,11 +31,20 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps
 
-export const DashboardPageContainer: React.FC<Props> = ({
+const UnconnectedDashboardPageContainer: React.FC<Props> = ({
   profile,
   getProfile,
 }: Props) => {
+  const [cookies] = useCookies(['nin'])
   const history = useHistory()
+
+  if (!cookies.nin) {
+    history.push(Routes.LOGIN)
+  }
+
+  if (!profile && cookies.nin) {
+    getProfile(cookies.nin)
+  }
 
   return (
     <PageContainer>
@@ -83,3 +96,14 @@ export const DashboardPageContainer: React.FC<Props> = ({
     </PageContainer>
   )
 }
+
+const mapStateToProps = ({ profile }: AppState): StateProps => ({ profile })
+
+const mapDispatchToProps = {
+  getProfile: getProfileThunk,
+}
+
+export const DashboardPageContainer = connect<StateProps, DispatchProps, {}, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(UnconnectedDashboardPageContainer)
