@@ -4,13 +4,15 @@ import { StyledSelfieOnTest } from './SelfieOnTestStyles'
 
 interface Props {
   setImage: (image: any) => void
+  setB64: (b64: string) => void
 }
 
-export const SelfieOnTest: React.FC<Props> = ({ setImage }) => (
+export const SelfieOnTest: React.FC<Props> = ({ setImage, setB64 }) => (
   <StyledSelfieOnTest>
     <ImageUpload
       onPhotoTake={(data) => {
         setImage(data.file)
+        setB64(data.b64)
       }}
     >
       <div className="camera-wrap">

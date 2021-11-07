@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Header, Heading, PageContainer, Sizes } from '../../components'
+import { Header, Heading, PageContainer, Sizes, TestFooter } from '../../components'
 import { SelfieOnTest } from '../../components/SelfieOnTest/SelfieOnTest'
-import { TestFooter } from '../../components/TestFooter/TestFooter'
 import { LoadingBar } from '../../components/LoadingBar/LoadingBar'
 import { IndividualTestProps } from '../../core/interfaces'
 import {
@@ -15,12 +14,26 @@ export const FaceRecognitionTestContainer: React.FC<IndividualTestProps> = ({
   current,
 }) => {
   const [image, setImage] = useState(null)
+  const [b64, updateB64] = useState(null)
 
   // when the image was loaded
-  if (image) {
-    // Context.apiService.setTimeout(() => {
-    //   onSuccess(true)
-    // }, 3000)
+  if (image && b64) {
+    Context.apiService
+      .faceRecognition({
+        nin: '198021209099',
+        picture: b64,
+      })
+      .then((result) => {
+        if (result.message !== 'AVC reasons discovered.') {
+          onSuccess(true)
+        } else {
+          onSuccess(false)
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+        onSuccess(false)
+      })
 
     return (
       <PageContainer>
@@ -41,6 +54,9 @@ export const FaceRecognitionTestContainer: React.FC<IndividualTestProps> = ({
 
       <StyledFaceRecognitionTestSection>
         <SelfieOnTest
+          setB64={(b64: any) => {
+            updateB64(b64)
+          }}
           setImage={(file: any) => {
             setImage(file)
           }}

@@ -9,6 +9,11 @@ export interface Profile {
   readonly picture: string
 }
 
-export interface SpeechResult {
+export interface RecognitionResult {
   readonly passed: boolean
+}
+
+export interface FaceRecognitionResult {
+  readonly passed: boolean
+  readonly message: string
 }

@@ -1,4 +1,4 @@
-import { Profile, SpeechResult } from '../domain'
+import { FaceRecognitionResult, Profile, RecognitionResult } from '../domain'
 
 export interface CreateProfileReq {
   readonly fullName: string
@@ -11,8 +11,14 @@ export interface CreateProfileReq {
   readonly medicalChecks: string[]
 }
 
+export interface SpeechRecognitionReq {
+  readonly picture: string
+  readonly nin: string
+}
+
 export interface ApiService {
   getProfile: (nin: string) => Promise<Profile>
-  speechRecognition: (formData: FormData) => Promise<SpeechResult>
+  speechRecognition: (formData: FormData) => Promise<RecognitionResult>
   updateProfile: (req: CreateProfileReq) => Promise<void>
+  faceRecognition: (req: SpeechRecognitionReq) => Promise<FaceRecognitionResult>
 }
