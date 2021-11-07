@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
+import { MdAddAPhoto } from 'react-icons/md'
 
-import { Button, Input, Form } from '../index'
+import { Button, Input, Form, ImageUpload } from '..'
+import { StyledImageUploadIcon } from '../elements/Form/FormStyles'
+
+interface Props {
+  action: () => void
+}
 
 interface FormValues {
   name: string
@@ -22,12 +28,16 @@ const initialValues: FormValues = {
   profilePicture: '',
 }
 
-export const ProfileInfoForm: React.FC = () => {
+export const ProfileInfoForm: React.FC<Props> = ({ action }: Props) => {
   const [formValues, updateFormValues] = useState<FormValues>(initialValues)
+  const isValid = Object.values(formValues).every(Boolean)
 
   const handleSubmit = () => {
-    console.log('next')
+    if (action) {
+      action()
+    }
   }
+
   return (
     <Form>
       <Input
@@ -80,8 +90,21 @@ export const ProfileInfoForm: React.FC = () => {
           updateFormValues({ ...formValues, ecPhone: e.currentTarget.value })
         }
       />
-
-      <Button>Next</Button>
+      <ImageUpload
+        onPhotoTake={(data) =>
+          updateFormValues({ ...formValues, profilePicture: data.b64 })
+        }
+      >
+        <StyledImageUploadIcon>
+          <span>Take a picture</span>
+          <span>
+            <MdAddAPhoto />
+          </span>
+        </StyledImageUploadIcon>
+      </ImageUpload>
+      <Button disabled={!isValid} onClick={handleSubmit}>
+        Next
+      </Button>
     </Form>
   )
 }

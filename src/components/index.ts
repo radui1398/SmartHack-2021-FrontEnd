@@ -7,6 +7,7 @@ export * from './EmergencyCta/EmergencyCta'
 
 export * from './Forms/ProfileInfoForm'
 export * from './Forms/LoginForm'
+export * from './Forms/ProfileTestsForm'
 
 export * from './elements/ProgressBar/ProgressBar'
 export * from './elements/PageContainer/PageContainer'

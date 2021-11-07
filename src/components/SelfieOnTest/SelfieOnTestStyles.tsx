@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { theme } from '../../globalStyle'
 
-export const StyledSelfieOnTest = styled.header`
+export const StyledSelfieOnTest = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
