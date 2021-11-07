@@ -1,10 +1,29 @@
 import React from 'react'
-import { Header, Heading, LoginForm, PageContainer } from '../../components'
+import { Heading, LoginForm, PageContainer } from '../../components'
+import { getProfileThunk } from '../../store/profile/getProfileThunk'
+import { connect } from 'react-redux'
+import { AppState } from '../../store'
 
-export const LoginPageContainer: React.FC = () => (
+interface DispatchProps {
+  getProfile(nin: string): void
+}
+
+const UnconnectedLoginPageContainer: React.FC<DispatchProps> = ({
+  getProfile,
+}: DispatchProps) => (
   <PageContainer>
-    <Header />
     <Heading title="USE YOUR NATIONAL IDENTIFICATION NUMBER TO LOGIN BACK" width={60} />
-    <LoginForm />
+    <LoginForm getProfile={getProfile} />
   </PageContainer>
 )
+
+const mapDispatchToProps: DispatchProps = {
+  getProfile: getProfileThunk,
+}
+
+const mapStateToProps = ({}: AppState) => ({})
+
+export const LoginPageContainer = connect<{}, DispatchProps, {}, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(UnconnectedLoginPageContainer)
