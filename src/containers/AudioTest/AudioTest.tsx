@@ -4,7 +4,7 @@ import { TestFooter } from '../../components/TestFooter/TestFooter'
 import { IndividualTestProps } from '../../core/interfaces'
 import { StyledMessageToRepeat } from './AudioTestStyles'
 import { LoadingBar } from '../../components/LoadingBar/LoadingBar'
-import axios from 'axios'
+import { Context } from '../../Context'
 
 export const AudioTest: React.FC<IndividualTestProps> = ({ onSuccess, current }) => {
   const [loading, setLoading] = useState(false)
@@ -15,18 +15,10 @@ export const AudioTest: React.FC<IndividualTestProps> = ({ onSuccess, current })
     setLoading(true)
 
     formData.append('voice', data.blob, 'voice.wav')
-    axios
-      .post(
-        'https://us-central1-smarthack-217e0.cloudfunctions.net/app/speech/recognize',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      )
-      .then((response) => {
-        onSuccess(response.data.passed)
+    Context.apiService
+      .speechRecognition(formData)
+      .then((result) => {
+        onSuccess(result.passed)
       })
       .catch(() => {
         onSuccess(false)

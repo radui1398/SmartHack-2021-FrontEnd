@@ -1,4 +1,4 @@
-import { Profile } from '../domain'
+import { Profile, SpeechResult } from '../domain'
 
 export interface CreateProfileReq {
   readonly fullName: string
@@ -13,6 +13,6 @@ export interface CreateProfileReq {
 
 export interface ApiService {
   getProfile: (nin: string) => Promise<Profile>
-
+  speechRecognition: (formData: FormData) => Promise<SpeechResult>
   updateProfile: (req: CreateProfileReq) => Promise<void>
 }

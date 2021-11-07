@@ -8,3 +8,7 @@ export interface Profile {
   readonly fullName: string
   readonly picture: string
 }
+
+export interface SpeechResult {
+  readonly passed: boolean
+}

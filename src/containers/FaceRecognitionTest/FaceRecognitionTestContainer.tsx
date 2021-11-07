@@ -8,6 +8,7 @@ import {
   StyledFaceRecognitionTestSection,
   StyledUploadedImage,
 } from './FaceRecognitionTestContainerStyles'
+import { Context } from '../../Context'
 
 export const FaceRecognitionTestContainer: React.FC<IndividualTestProps> = ({
   onSuccess,
@@ -17,9 +18,9 @@ export const FaceRecognitionTestContainer: React.FC<IndividualTestProps> = ({
 
   // when the image was loaded
   if (image) {
-    setTimeout(() => {
-      onSuccess(true)
-    }, 3000)
+    // Context.apiService.setTimeout(() => {
+    //   onSuccess(true)
+    // }, 3000)
 
     return (
       <PageContainer>

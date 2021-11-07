@@ -1,7 +1,7 @@
 import { ApiService, CreateProfileReq } from '../core/services'
 import { AxiosService } from './AxiosService'
 import { API_KEY, BASE_URL } from '../utils/configuration'
-import { Profile } from '../core/domain'
+import { Profile, SpeechResult } from '../core/domain'
 
 export class HttpApiService implements ApiService {
   private axiosInstance: AxiosService
@@ -21,5 +21,17 @@ export class HttpApiService implements ApiService {
 
   updateProfile(req: CreateProfileReq): Promise<void> {
     return this.axiosInstance.put<CreateProfileReq, void>('/users/register', req)
+  }
+
+  speechRecognition(formData: FormData): Promise<SpeechResult> {
+    return this.axiosInstance.post<FormData, SpeechResult>(
+      '/speech/recognize',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    )
   }
 }

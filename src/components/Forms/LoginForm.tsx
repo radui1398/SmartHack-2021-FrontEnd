@@ -1,6 +1,5 @@
 import React, { FormEvent, useState } from 'react'
 import { Button, Form, Input, Spinner } from '..'
-import { Context } from '../../Context'
 
 interface Props {
   getProfile(nin: string): void
