@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Routes } from '../../core/types'
 import {
@@ -42,9 +42,11 @@ const UnconnectedDashboardPageContainer: React.FC<Props> = ({
     history.push(Routes.LOGIN)
   }
 
-  if (!profile && cookies.nin) {
-    getProfile(cookies.nin)
-  }
+  useEffect(() => {
+    if (!profile.fullName && cookies.nin) {
+      getProfile(cookies.nin)
+    }
+  })
 
   return (
     <PageContainer>
