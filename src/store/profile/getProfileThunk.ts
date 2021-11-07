@@ -15,6 +15,8 @@ export const getProfileThunk =
 
       const profile = await Context.apiService.getProfile(nin)
 
+      console.log(profile)
+
       dispatch(getProfileSuccessAction(profile))
 
       return resultFormatter.ok<void, string>()
@@ -22,8 +24,8 @@ export const getProfileThunk =
       dispatch(getProfileErrorAction(error))
 
       await Context.alertService.fire({
-        title: 'Error',
-        text: error.message,
+        title: 'Oops...',
+        text: 'Profile not found',
         showCloseButton: true,
         icon: 'error',
       })

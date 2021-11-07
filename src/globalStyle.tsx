@@ -216,6 +216,20 @@ export const GlobalReset = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  .swal2-title{
+    font: 600 32px/44px ${font.primary};
+  }
+  
+  .swal2-html-container {
+    font: 400 16px/24px ${font.primary};
+  }
+  
+  .swal2-actions > .swal2-styled.swal2-confirm {
+    background-color: ${color.blue.main};
+  }
+  
+  
 `
 
 export const theme = Object.freeze({
