@@ -4,6 +4,7 @@ import { theme } from '../../globalStyle'
 export const StyledResultList = styled.ul`
   margin-top: 20px;
   padding: 0;
+  width: 100%;
 `
 
 export const StyledResultItem = styled.li<{ passed: boolean }>`
@@ -23,9 +24,7 @@ export const StyledResultText = styled.p`
 `
 
 export const StyledResultExit = styled.div`
-  position: absolute;
-  bottom: 20px;
-  left: 0;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   width: 100%;

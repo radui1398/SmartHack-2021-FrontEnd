@@ -33,6 +33,7 @@ const queries = {
 
 const font = {
   primary: 'Roboto, sans-serif',
+  ubuntu: 'Ubuntu, sans-serif',
   secondary: 'Montserrat, sans-serif',
   tertiary: 'Nunito, sans-serif',
   quaternary: 'Major Mono Display, monospace',

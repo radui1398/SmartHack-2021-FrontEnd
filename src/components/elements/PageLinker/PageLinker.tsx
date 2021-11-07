@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyledPageLinker } from './PageLinkerStyles'
 import { Heading } from '../Heading/Heading'
+import { Link } from 'react-router-dom'
 
 interface Props {
   path: string
@@ -10,8 +11,8 @@ interface Props {
 
 export const PageLinker: React.FC<Props> = ({ path, label = '', width = 60 }: Props) => (
   <StyledPageLinker>
-    <a href={path}>
+    <Link to={path}>
       <Heading title={label} width={width} />
-    </a>
+    </Link>
   </StyledPageLinker>
 )

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Heading, PageContainer, PageLinker } from '../../components'
 import { SingleTestInterface } from '../../core/interfaces'
+import { Routes } from '../../core/types'
 import {
   StyledResultList,
   StyledResultItem,
@@ -35,7 +36,7 @@ export const TestResultsContainer: React.FC<Props> = ({ tests }) => {
       </StyledResultText>
 
       <StyledResultExit>
-        <PageLinker path="/" label="Exit" width={40} />
+        <PageLinker path={Routes.DASHBOARD} label="Exit" width={40} />
       </StyledResultExit>
     </PageContainer>
   )
